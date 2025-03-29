@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   Book, ChartBar, Grid3X3, Menu, X, 
-  Users, FileText, CircleCheck, Sparkles, LogOut 
+  Users, FileText, CircleCheck, Sparkles, LogOut, Bell 
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/components/AuthProvider';
@@ -16,9 +16,15 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { toast } from '@/hooks/use-toast';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasUnreadNotifications, setHasUnreadNotifications] = useState(true);
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -48,6 +54,21 @@ const Navigation = () => {
       });
     }
   };
+
+  const handleNotificationClick = () => {
+    setHasUnreadNotifications(false);
+    toast({
+      title: 'Notifications',
+      description: 'You have marked all notifications as read',
+    });
+  };
+
+  // Mock notifications data
+  const notifications = [
+    { id: 1, title: 'New resource available', time: '2 hours ago' },
+    { id: 2, title: 'Task deadline approaching', time: 'Yesterday' },
+    { id: 3, title: 'Performance summary ready', time: '3 days ago' },
+  ];
 
   const navItems = [
     { path: '/dashboard', name: 'Dashboard', icon: <Grid3X3 className="w-5 h-5" /> },
@@ -89,28 +110,67 @@ const Navigation = () => {
 
         <div className="hidden md:flex items-center gap-3">
           {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="relative rounded-full h-8 w-8 p-0">
-                  <Avatar>
-                    <AvatarFallback className="bg-edu-blue text-white">
-                      {userInitials}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <div className="flex items-center justify-start gap-2 p-2">
-                  <div className="flex flex-col space-y-1 leading-none">
-                    <p className="font-medium">{userEmail}</p>
+            <>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    {hasUnreadNotifications && (
+                      <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
+                    )}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 p-0">
+                  <div className="px-4 py-3 border-b flex items-center justify-between">
+                    <h3 className="font-medium">Notifications</h3>
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      onClick={handleNotificationClick}
+                      className="text-xs h-7"
+                    >
+                      Mark all as read
+                    </Button>
                   </div>
-                </div>
-                <DropdownMenuItem onClick={handleLogout}>
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Log out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  <div className="max-h-80 overflow-y-auto">
+                    {notifications.length > 0 ? (
+                      notifications.map((notification) => (
+                        <div key={notification.id} className="px-4 py-3 border-b last:border-b-0 hover:bg-muted/50">
+                          <p className="font-medium text-sm">{notification.title}</p>
+                          <p className="text-xs text-muted-foreground mt-1">{notification.time}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="p-4 text-center text-muted-foreground">
+                        No notifications
+                      </div>
+                    )}
+                  </div>
+                </PopoverContent>
+              </Popover>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" className="relative rounded-full h-8 w-8 p-0">
+                    <Avatar>
+                      <AvatarFallback className="bg-edu-blue text-white">
+                        {userInitials}
+                      </AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <div className="flex items-center justify-start gap-2 p-2">
+                    <div className="flex flex-col space-y-1 leading-none">
+                      <p className="font-medium">{userEmail}</p>
+                    </div>
+                  </div>
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Log out</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </>
           ) : (
             <>
               <Link to="/login">
@@ -164,7 +224,18 @@ const Navigation = () => {
                   </div>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-center font-medium"
+                    className="w-full justify-start font-medium"
+                    onClick={handleNotificationClick}
+                  >
+                    <Bell className="mr-2 h-4 w-4" />
+                    Notifications
+                    {hasUnreadNotifications && (
+                      <span className="ml-2 w-2 h-2 bg-red-500 rounded-full"></span>
+                    )}
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full justify-start font-medium"
                     onClick={handleLogout}
                   >
                     <LogOut className="mr-2 h-4 w-4" />
