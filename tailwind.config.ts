@@ -67,13 +67,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				edu: {
-					blue: '#8b634a',      // Changed to Georgian brown
-					teal: '#a57659',      // Changed to Georgian light brown
-					orange: '#c24e2c',    // Changed to Georgian terracotta
-					purple: '#5e4835',    // Changed to Georgian dark brown
-					green: '#607744',     // Changed to Georgian olive
-					pink: '#b25d50',      // Changed to Georgian clay
-					yellow: '#e0d5c1'     // Changed to Georgian beige
+					blue: '#1E70B7',      // Changed to educational blue
+					teal: '#4B9DBF',      // Changed to educational teal
+					orange: '#FF8E3C',    // Changed to softer orange
+					purple: '#7764E4',    // Changed to educational purple
+					green: '#4CAF50',     // Changed to educational green
+					pink: '#FF5A8C',      // Changed to educational pink
+					yellow: '#FFD166'     // Changed to educational yellow
 				}
 			},
 			borderRadius: {
