@@ -41,15 +41,15 @@ const Navigation = () => {
     try {
       await supabase.auth.signOut();
       toast({
-        title: 'Logged out',
-        description: 'You have been successfully logged out',
+        title: 'გასვლა',
+        description: 'თქვენ წარმატებით გახვედით სისტემიდან',
       });
       navigate('/login');
     } catch (error) {
       console.error('Error logging out:', error);
       toast({
-        title: 'Logout failed',
-        description: 'There was an error while logging out',
+        title: 'გასვლა ვერ მოხერხდა',
+        description: 'სისტემიდან გასვლისას მოხდა შეცდომა',
         variant: 'destructive',
       });
     }
@@ -87,7 +87,7 @@ const Navigation = () => {
           <div className="flex items-center justify-center w-10 h-10 rounded-md bg-[#8b634a] text-white">
             <Sparkles className="w-6 h-6" />
           </div>
-          <span className="text-xl font-bold text-[#4a3728] font-serif">განათლება</span>
+          <span className="text-xl font-bold text-[#4a3728] font-georgian">განათლება</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -96,7 +96,7 @@ const Navigation = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-serif ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors font-georgian ${
                 location.pathname === item.path
                   ? 'text-[#8b634a] font-medium'
                   : 'text-[#4a3728] hover:text-[#8b634a] hover:bg-[#f0e6d9]'
@@ -122,12 +122,12 @@ const Navigation = () => {
                 </PopoverTrigger>
                 <PopoverContent className="w-80 p-0 bg-[#f9f3e9] border border-[#e0d5c1]">
                   <div className="px-4 py-3 border-b border-[#e0d5c1] flex items-center justify-between">
-                    <h3 className="font-medium font-serif text-[#4a3728]">შეტყობინებები</h3>
+                    <h3 className="font-medium font-georgian text-[#4a3728]">შეტყობინებები</h3>
                     <Button 
                       variant="ghost" 
                       size="sm" 
                       onClick={handleNotificationClick}
-                      className="text-xs h-7 text-[#8b634a] hover:text-[#a57659] hover:bg-[#f0e6d9] font-serif"
+                      className="text-xs h-7 text-[#8b634a] hover:text-[#a57659] hover:bg-[#f0e6d9] font-georgian"
                     >
                       ყველას წაკითხვა
                     </Button>
@@ -141,7 +141,7 @@ const Navigation = () => {
                         </div>
                       ))
                     ) : (
-                      <div className="p-4 text-center text-[#6b5d4d] font-serif">
+                      <div className="p-4 text-center text-[#6b5d4d] font-georgian">
                         შეტყობინება არ არის
                       </div>
                     )}
@@ -152,7 +152,7 @@ const Navigation = () => {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative rounded-full h-8 w-8 p-0 bg-[#e0d5c1] hover:bg-[#d6c7b0]">
                     <Avatar>
-                      <AvatarFallback className="bg-[#8b634a] text-white font-serif">
+                      <AvatarFallback className="bg-[#8b634a] text-white font-georgian">
                         {userInitials}
                       </AvatarFallback>
                     </Avatar>
@@ -161,12 +161,12 @@ const Navigation = () => {
                 <DropdownMenuContent align="end" className="bg-[#f9f3e9] border border-[#e0d5c1]">
                   <div className="flex items-center justify-start gap-2 p-2 border-b border-[#e0d5c1]">
                     <div className="flex flex-col space-y-1 leading-none">
-                      <p className="font-medium text-[#4a3728] font-serif">{userEmail}</p>
+                      <p className="font-medium text-[#4a3728] font-georgian">{userEmail}</p>
                     </div>
                   </div>
                   <DropdownMenuItem onClick={handleLogout} className="text-[#4a3728] hover:text-[#8b634a] hover:bg-[#f0e6d9] cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span className="font-serif">გასვლა</span>
+                    <span className="font-georgian">გასვლა</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -174,12 +174,12 @@ const Navigation = () => {
           ) : (
             <>
               <Link to="/login">
-                <Button variant="outline" className="font-medium font-serif border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] hover:text-[#a57659]">
+                <Button variant="outline" className="font-medium font-georgian border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] hover:text-[#a57659]">
                   შესვლა
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button className="bg-[#8b634a] hover:bg-[#a57659] text-white font-medium font-serif">
+                <Button className="bg-[#8b634a] hover:bg-[#a57659] text-white font-medium font-georgian">
                   რეგისტრაცია
                 </Button>
               </Link>
@@ -205,7 +205,7 @@ const Navigation = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-2 px-3 py-3 rounded-md transition-colors font-serif ${
+                className={`flex items-center gap-2 px-3 py-3 rounded-md transition-colors font-georgian ${
                   location.pathname === item.path
                     ? 'text-[#8b634a] font-medium'
                     : 'text-[#4a3728] hover:text-[#8b634a] hover:bg-[#f0e6d9]'
@@ -220,11 +220,11 @@ const Navigation = () => {
               {user ? (
                 <>
                   <div className="px-3 py-2">
-                    <p className="font-medium text-[#4a3728] font-serif">{userEmail}</p>
+                    <p className="font-medium text-[#4a3728] font-georgian">{userEmail}</p>
                   </div>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-serif"
+                    className="w-full justify-start font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-georgian"
                     onClick={handleNotificationClick}
                   >
                     <Bell className="mr-2 h-4 w-4" />
@@ -235,7 +235,7 @@ const Navigation = () => {
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="w-full justify-start font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-serif"
+                    className="w-full justify-start font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-georgian"
                     onClick={handleLogout}
                   >
                     <LogOut className="mr-2 h-4 w-4" />
@@ -245,12 +245,12 @@ const Navigation = () => {
               ) : (
                 <>
                   <Link to="/login" onClick={closeMenu}>
-                    <Button variant="outline" className="w-full justify-center font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-serif">
+                    <Button variant="outline" className="w-full justify-center font-medium border-[#8b634a] text-[#8b634a] hover:bg-[#f0e6d9] font-georgian">
                       შესვლა
                     </Button>
                   </Link>
                   <Link to="/signup" onClick={closeMenu}>
-                    <Button className="w-full justify-center bg-[#8b634a] hover:bg-[#a57659] text-white font-medium font-serif">
+                    <Button className="w-full justify-center bg-[#8b634a] hover:bg-[#a57659] text-white font-medium font-georgian">
                       რეგისტრაცია
                     </Button>
                   </Link>

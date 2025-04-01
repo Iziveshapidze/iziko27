@@ -19,6 +19,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				georgian: ["'Noto Serif Georgian'", 'serif']
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -64,13 +67,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				edu: {
-					blue: '#4C6FFF',
-					teal: '#37B9C5',
-					orange: '#FF9F5A',
-					purple: '#6E59A5',
-					green: '#4BB543',
-					pink: '#FF5A8C',
-					yellow: '#FFD166'
+					blue: '#8b634a',      // Changed to Georgian brown
+					teal: '#a57659',      // Changed to Georgian light brown
+					orange: '#c24e2c',    // Changed to Georgian terracotta
+					purple: '#5e4835',    // Changed to Georgian dark brown
+					green: '#607744',     // Changed to Georgian olive
+					pink: '#b25d50',      // Changed to Georgian clay
+					yellow: '#e0d5c1'     // Changed to Georgian beige
 				}
 			},
 			borderRadius: {
