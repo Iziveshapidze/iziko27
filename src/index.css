@@ -98,8 +98,8 @@
 }
 
 .georgian-pattern {
-  background-color: #f8f0ff;
-  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50l-10-10 10-10 10 10-10 10zm0 20l-10-10 10-10 10 10-10 10zm-20-20l-10-10 10-10 10 10-10 10zm40 0l-10-10 10-10 10 10-10 10z' fill='%234B6BDC' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-color: #FFF59D;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50l-10-10 10-10 10 10-10 10zm0 20l-10-10 10-10 10 10-10 10zm-20-20l-10-10 10-10 10 10-10 10zm40 0l-10-10 10-10 10 10-10 10z' fill='%234C6FFF' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 .georgian-ornament {
@@ -110,6 +110,37 @@
   content: "჻";
   position: absolute;
   font-size: 1.5rem;
-  color: #4C6FFF;
-  opacity: 0.6;
+  color: #FF5757;
+  opacity: 0.8;
+}
+
+/* Colorful animations and effects */
+@keyframes colorful-float {
+  0% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+  50% { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(0,0,0,0.1); }
+  100% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+}
+
+.animate-colorful {
+  animation: colorful-float 4s ease-in-out infinite;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(90deg, #FF5757, #FFC107, #4CAF50, #2196F3);
+  background-clip: text;
+  color: transparent;
+  background-size: 300% 100%;
+  animation: rainbow-text-animation 4s ease infinite;
+}
+
+@keyframes rainbow-text-animation {
+  0% { background-position: 0 0; }
+  50% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+.colorful-border {
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(45deg, #FF5757, #FFC107, #4CAF50, #2196F3) 1;
 }
