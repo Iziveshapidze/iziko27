@@ -67,13 +67,18 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				edu: {
-					blue: '#1E70B7',      // Changed to educational blue
-					teal: '#4B9DBF',      // Changed to educational teal
-					orange: '#FF8E3C',    // Changed to softer orange
-					purple: '#7764E4',    // Changed to educational purple
-					green: '#4CAF50',     // Changed to educational green
-					pink: '#FF5A8C',      // Changed to educational pink
-					yellow: '#FFD166'     // Changed to educational yellow
+					blue: '#4C6FFF',      // Bright educational blue
+					teal: '#37B9C5',      // Vibrant teal
+					orange: '#FF8E3C',    // Vibrant orange
+					purple: '#7764E4',    // Vibrant purple
+					green: '#4CAF50',     // Vibrant green
+					pink: '#FF5A8C',      // Vibrant pink
+					yellow: '#FFD166',    // Vibrant yellow
+					red: '#FF5757',       // Vibrant red
+					lavender: '#B39DDB',  // Soft lavender
+					mint: '#A5D6A7',      // Soft mint
+					coral: '#FF8A80',     // Soft coral
+					sky: '#81D4FA'        // Soft sky blue
 				}
 			},
 			borderRadius: {
